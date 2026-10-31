@@ -1,0 +1,27 @@
+
+plugins { id 'com.android.application' }
+android {
+    namespace 'com.momomart.dse5star'
+    compileSdk 36
+    defaultConfig {
+        applicationId "com.momomart.dse5star"
+        minSdk 24
+        targetSdk 36
+        versionCode 15
+        versionName "1.0.15-700Q-NORMAL"
+    }
+    signingConfigs {
+        release {
+            storeFile file("momomart_release.keystore")
+            storePassword "MomoMart123"
+            keyAlias "momomart"
+            keyPassword "MomoMart123"
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+}
