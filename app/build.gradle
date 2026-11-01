@@ -10,7 +10,7 @@ android {
         minSdk 24
         targetSdk 36
         versionCode 16
-        versionName "16.0-Hell-BlackGold-AdFull"
+        versionName "17.0-Hell-BlackGold-AdFull"
         multiDexEnabled true
     }
     signingConfigs {
