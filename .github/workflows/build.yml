@@ -31,6 +31,7 @@ jobs:
 
       - name: Build AAB V16
         run: |
+          ./gradlew clean
           gradle --version
           gradle bundleRelease --stacktrace
 
