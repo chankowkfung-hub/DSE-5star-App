@@ -1,5 +1,7 @@
-name: Build AAB V15 NORMAL
+name: Build AAB V16 BlackGold AdFull
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -9,17 +11,30 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+
       - name: Install Android SDK 36
         run: |
           echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
           echo "ANDROID_SDK_ROOT=/usr/local/lib/android/sdk" >> $GITHUB_ENV
           yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
           /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-36" "build-tools;36.0.0" || true
-      - name: Build AAB
+
+      - name: Generate keystore MomoMart123 if missing
+        run: |
+          if [ ! -f momomart.jks ]; then
+            keytool -genkey -v -keystore momomart.jks -keyalg RSA -keysize 2048 -validity 10000 -alias momomart -storepass MomoMart123 -keypass MomoMart123 -dname "CN=MomoMart, OU=DSE, O=MomoMart, L=HK, S=HK, C=HK"
+          fi
+          ls -lh momomart.jks
+
+      - name: Grant execute permission
+        run: chmod +x gradlew
+
+      - name: Build AAB V16
         run: |
           gradle --version
           gradle bundleRelease --stacktrace
+
       - uses: actions/upload-artifact@v4
         with:
-          name: app-release-aab-V15-NORMAL
+          name: app-release-aab-V16-BlackGold
           path: app/build/outputs/bundle/release/app-release.aab
