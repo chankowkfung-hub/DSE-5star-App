@@ -19,12 +19,7 @@ jobs:
           yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
           /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-36" "build-tools;36.0.0" || true
 
-      - name: Generate keystore MomoMart123 if missing
-        run: |
-          if [ ! -f momomart.jks ]; then
-            keytool -genkey -v -keystore momomart.jks -keyalg RSA -keysize 2048 -validity 10000 -alias momomart -storepass MomoMart123 -keypass MomoMart123 -dname "CN=MomoMart, OU=DSE, O=MomoMart, L=HK, S=HK, C=HK"
-          fi
-          ls -lh momomart.jks
+      
 
       - name: Grant execute permission
         run: chmod +x gradlew
