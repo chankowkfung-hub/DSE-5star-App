@@ -7,7 +7,7 @@ android {
     compileSdk 36
     defaultConfig {
         applicationId "com.momomart.dse5star"
-        minSdk 21
+        minSdk 24
         targetSdk 36
         versionCode 16
         versionName "16.0-Hell-BlackGold-AdFull"
