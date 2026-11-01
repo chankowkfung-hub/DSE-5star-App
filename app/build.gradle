@@ -9,7 +9,7 @@ android {
         applicationId "com.momomart.dse5star"
         minSdk 24
         targetSdk 36
-        versionCode 16
+        versionCode 17
         versionName "17.0-Hell-BlackGold-AdFull"
         multiDexEnabled true
     }
